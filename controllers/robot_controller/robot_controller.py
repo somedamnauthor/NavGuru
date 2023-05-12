@@ -6,8 +6,8 @@ from a_star import get_route
 from controller import Robot as WebotsRobot, GPS, Keyboard, InertialUnit
 from enums import *
 from math import pi
-# from dijkstra import dijkstra
-# import numpy as np
+from dijkstra import dijkstra
+import numpy as np
 
 if __name__ == "__main__":
 
@@ -73,7 +73,7 @@ if __name__ == "__main__":
             [0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],]
             
             
-    # obstacles = np.array(maps, dtype=float)
+    obstacles = np.array(maps, dtype=float)
     
     
     # obstacles = np.array([[0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
@@ -100,11 +100,10 @@ if __name__ == "__main__":
     
     route = get_route((0, 0), (5, 10), maps)
     print("A* ROUTE:", route)
-    # route = dijkstra([0,0],[5,10],obstacles)
-    # print("Dijkstra ROUTE:", route)
+    route = dijkstra([0,0],[5,10],obstacles)
+    print("Dijkstra ROUTE:", route)
 
     # sdfgsdfgsdfgsd
-    
     # print("ROUTE:", route)
     
     current_x, current_y = route.pop(0)
