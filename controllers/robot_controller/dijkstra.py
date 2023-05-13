@@ -20,6 +20,18 @@ def left(node):
 def right(node):
     return (node[0],node[1]+1)
 
+def upLeft(node):
+    return (node[0]-1, node[1]-1)
+
+def upRight(node):
+    return (node[0]-1, node[1]+1)
+
+def downLeft(node):
+    return (node[0]+1, node[1]-1)
+
+def downRight(node):
+    return (node[0]+1, node[1]+1)
+
 def backtrack(initial_node, desired_node, distances):
     # idea start at the last node then choose the least number of steps to go back
     # last node
@@ -32,7 +44,7 @@ def backtrack(initial_node, desired_node, distances):
         potential_distances = []
         potential_nodes = []
 
-        directions = [up,down,left,right]
+        directions = [up,down,left,right,upLeft,upRight,downLeft,downRight]
 
         for direction in directions:
             node = direction(path[-1])
@@ -85,7 +97,7 @@ def dijkstra(initial_node, desired_node, obstacles):
     # start algorithm
     current_node = [initial_node[0], initial_node[1]]
     while True:
-        directions = [up, down, left, right]
+        directions = [up, down, left, right, upLeft, upRight, downLeft, downRight]
         for direction in directions:
             potential_node = direction(current_node)
             if valid_node(potential_node, size_of_floor): # boundary checking
