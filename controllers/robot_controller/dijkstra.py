@@ -1,4 +1,6 @@
 import numpy as np
+import matplotlib.pyplot as plt
+import MAPS
 
 def valid_node(node, size_of_grid):
     """Checks if node is within the grid boundaries."""
@@ -134,49 +136,17 @@ def dijkstra(initial_node, desired_node, obstacles):
     # backtrack to construct path
     return backtrack(initial_node,desired_node,distances)
 
+def dijkstra_route(STAGE, start, finish):
 
-import matplotlib.pyplot as plt
-# obstacles = np.array([[0,0,0,0,0,0,0,0,0,0],
-#                       [0,0,0,0,0,0,0,0,0,0],
-#                       [0,0,0,0,1,0,0,0,0,0],
-#                       [0,0,0,1,0,1,0,0,0,0],
-#                       [1,1,1,1,0,1,1,0,0,0],
-#                       [0,0,0,1,0,1,0,0,0,0],
-#                       [0,0,0,0,0,1,1,0,0,0],
-#                       [0,0,0,0,0,1,0,0,0,0],
-#                       [0,0,0,0,1,0,0,0,0,0],
-#                       [0,0,0,0,0,0,0,0,0,0]], dtype=float)
+    obstacles = np.array(MAPS.select_map(STAGE), dtype=float)
+    path = dijkstra(start, finish, obstacles)
+    # print(path)
+    return path
 
-
-obstacles = np.array([[0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
-            [0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,],
-            [1, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0,],
-            [0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,],
-            [0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,],
-            [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,],
-            [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0,],
-            [0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0,],
-            [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,],
-            [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0,],
-            [0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0,],
-            [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0,],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0,],
-            [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0,],
-            [0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0,],
-            [0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0,],
-            [0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0,],
-            [0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1,],
-            [0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,],
-            [0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],], dtype=float)
-
-
-path = dijkstra([0,0],[5,10],obstacles)
-print(path)
-
+# dijkstra_route(STAGE=1, start=(0,0), finish=(10,5))
     
 # p = np.zeros(shape=obstacles.shape)
 # for i in range(len(path)):
 #     p[path[i][0],path[i][1]] = np.nan
-
 # plt.imshow(p+obstacles, cmap='jet')
 # plt.show()
