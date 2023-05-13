@@ -2,7 +2,7 @@
 
 # You may need to import some classes of the controller module. Ex:
 #  from controller import Robot, Motor, DistanceSensor
-from a_star import get_route
+# from a_star import get_route
 from controller import Robot as WebotsRobot, GPS, Keyboard, InertialUnit
 from enums import *
 from math import pi
@@ -98,8 +98,8 @@ if __name__ == "__main__":
             # [0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],], dtype=float)
             
     
-    route = get_route((0, 0), (5, 10), maps)
-    print("A* ROUTE:", route)
+    # route = get_route((0, 0), (5, 10), maps)
+    # print("A* ROUTE:", route)
     route = dijkstra([0,0],[5,10],obstacles)
     print("Dijkstra ROUTE:", route)
 
