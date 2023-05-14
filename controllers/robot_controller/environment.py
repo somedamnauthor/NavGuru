@@ -42,7 +42,7 @@ class environment:
             self.reward = self.env[x + act_x][y + act_y]
             if self.reward < 0 : 
                 done = True
-            elif self.reward > 0:
+            elif self.pos == self.goal:
                 self.success = True
                 done =True
             return self.next_state, self.reward , done
@@ -91,6 +91,8 @@ def main():
             [0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, -1, 0, 0],
             [0, 0, 0, 0, -1, 0, 1]])
+    
+    
     
     e = environment(maze,(1,0), (3, 6))
     x, y = maze.shape
