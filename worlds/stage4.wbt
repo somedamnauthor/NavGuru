@@ -62,7 +62,7 @@ Wall {
   translation 7.26154 3.75835 -5.97301e-13
   rotation 0 1 0 0
   name "wall(57)"
-  size 1 1 0.15
+  size 0.75 1 0.15
   appearance Roughcast {
     colorOverride 0 0 0
     textureTransform TextureTransform {
@@ -233,7 +233,7 @@ Wall {
   translation 10.6218 10.4982 -2.66454e-15
   rotation 0 0 -0.9999999999999999 1.5707953071795862
   name "wall(58)"
-  size 1 0.15 0.15
+  size 0.75 0.15 0.15
   appearance Roughcast {
     colorOverride 0 0 0
     textureTransform TextureTransform {
