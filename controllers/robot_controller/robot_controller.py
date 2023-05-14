@@ -24,10 +24,19 @@ def call_Dijkstra(STAGE, start, finish):
     print("Time Taken (ms):",time_ms)  
     return route
 
+@profile(precision=3)
+def call_Qlearning(STAGE, start, finish):
+    start_time = time.time()
+    route = q_learning_route(STAGE, start, finish)  
+    end_time = time.time()
+    time_ms = (end_time - start_time)*1000
+    print("Time Taken (ms):",time_ms)  
+    return route
+
 
 if __name__ == "__main__":
     
-    STAGE, start, finish, algo = 4, (0,0), (49,49), "Dijkstra" # change only these values to run the simulation
+    STAGE, start, finish, algo = 4, (0,0), (49,49), "Q" # change only these values to run the simulation
     
     
     if algo == "Dijkstra":
@@ -41,6 +50,12 @@ if __name__ == "__main__":
         from a_star import astar_route
         route = call_AStar(STAGE, start, finish)
         print(f"A* Route : {route}")
+        
+    if algo == "Q":
+        print("Running Q-Learning")
+        from q_learning import q_learning_route
+        route = call_Qlearning(STAGE, start, finish)
+        print(f"Q-learning Route : {route}")
         
     print("Route Analysis - ")
     num_diags = 0
