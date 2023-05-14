@@ -1,0 +1,192 @@
+#VRML_SIM R2023a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/apartment_structure/protos/Wall.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.7048349063772791 0.013014750626480559 0.7092519799184651 3.1154055392178064
+  position 1.7758985748797473 1.3555253118411545 7.515462894065073
+  follow "robot"
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  translation 1.25 1.25 0
+  floorSize 2.5 2.5
+}
+Wall {
+  translation 1.8704 0.127993 6.0396e-14
+  rotation 0 1 0 0
+  size 1 0.125 0.25
+}
+Wall {
+  translation 1.82194 1.62398 1.0747e-13
+  rotation 0 1 0 0
+  name "wall(8)"
+  size 1.25 0.124 0.25
+}
+Wall {
+  translation 1.36107 0.624121 5.86197e-14
+  rotation 0 1 0 0
+  name "wall(5)"
+  size 0.5 0.125 0.25
+}
+Wall {
+  translation 0.376555 1.36909 5.59552e-14
+  rotation 0 1 0 0
+  name "wall(4)"
+  size 0.75 0.125 0.25
+}
+Wall {
+  translation 1.00689 0.375044 -7.19424e-14
+  rotation 0 1 0 0
+  name "wall(1)"
+  size 0.5 0.125 0.25
+}
+Wall {
+  translation 0.703844 1.132 -8.88161e-16
+  rotation 0 1 0 0
+  name "wall(3)"
+  size 0.5 0.125 0.25
+}
+Wall {
+  translation 0.126544 1.12359 1.77637e-15
+  rotation 0 1 0 0
+  name "wall(2)"
+  size 0.25 0.125 0.25
+}
+Wall {
+  translation 2.36813 1.13271 -8.79297e-14
+  rotation 0 1 0 0
+  name "wall(7)"
+  size 0.25 0.25 0.25
+}
+Wall {
+  translation 2.12063 0.501906 1.06581e-13
+  rotation 0 1 0 0
+  name "wall(6)"
+  size 0.125 0.5 0.25
+}
+Wall {
+  translation 1.39215 1.92829 8.70409e-14
+  rotation 0 1 0 0
+  name "wall(9)"
+  size 0.125 0.5 0.25
+}
+DEF robot Robot {
+  translation 0.136905 0.137642 -0.000206564
+  rotation 0.0058487582412601585 0.014459062475788442 0.999878356371092 2.3727197403148135
+  children [
+    InertialUnit {
+    }
+    GPS {
+    }
+    DEF body Transform {
+      translation 0 0 0.0415
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 1
+            roughness 1
+            metalness 0
+          }
+          geometry Cylinder {
+            height 0.08
+            radius 0.045
+          }
+        }
+      ]
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 26.436890330872124
+        anchor 0.045 0 0.025
+      }
+      device [
+        RotationalMotor {
+          name "motor_1"
+        }
+        PositionSensor {
+          name "ps_1"
+        }
+      ]
+      endPoint Solid {
+        translation 0.045 0 0.025
+        rotation 0.5190887898105501 0.6793544440376948 0.5186755899974984 1.9473820580864931
+        children [
+          DEF wheel Shape {
+            appearance PBRAppearance {
+              baseColor 1 0 0
+              roughness 1
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.01
+              radius 0.025
+            }
+          }
+        ]
+        boundingObject USE wheel
+        physics DEF wheel_physics Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 45.80439215953104
+        anchor -0.045 0 0.025
+      }
+      device [
+        RotationalMotor {
+          name "motor_2"
+        }
+        PositionSensor {
+          name "ps_2"
+        }
+      ]
+      endPoint Solid {
+        translation -0.045 0 0.025
+        rotation -0.6202732285532756 -0.48076450784687286 -0.619779484925768 4.03849702559752
+        children [
+          USE wheel
+        ]
+        name "solid(1)"
+        boundingObject USE wheel
+        physics USE wheel_physics
+      }
+    }
+    Solid {
+      translation 0.015 -0.045 0.07
+      children [
+        DEF eye Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+      ]
+      name "solid(2)"
+    }
+    Solid {
+      translation -0.015 -0.045 0.07
+      children [
+        USE eye
+      ]
+      name "solid(3)"
+    }
+  ]
+  boundingObject USE body
+  physics Physics {
+  }
+  controller "robot_controller"
+}

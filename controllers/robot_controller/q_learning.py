@@ -6,32 +6,31 @@ import MAPS
 
 def q_learning_route(STAGE, start, finish):
 
-    STAGE = 1
-    start = (0,0)
-    finish = (9,9)
-
     np.random.seed(0)
+    
+    # STAGE = 0
+    # start = (0,0)
+    # finish = (9,9)
 
-    maps = np.array([[0, 0, 0, 0, -1, -1, 0, 0, 0, 0],
-                        [0, 0, 0, 0, 0, -1, 0, 0, 0, 0],
-                        [0, 0, 0, 0, -1, -1, 0, 0, 0, 0],
-                        [0, -1, 0, 0, -1, 0, 0, 0, 0, 0],
-                        [0, -1, -1, 0, 0, 0, -1, 0, 0, 0],
-                        [-1, 0, -1, 0, 0, 0, -1, -1, -1, 0],
-                        [-1, 0, -1, 0, 0, 0, -1, 0, 0, 0],
-                        [-1, 0, 0, 0, 0, 0, -1, 0, 0, 0],
-                        [-1, -1, -1, 0, 0, 0, -1, 0, 0, 0],
-                        [-1, 0, 0, 0,- 1, 0, -1, 0, 0, 1]])
+    # maps = np.array([[0, 0, 0, 0, -1, -1, 0, 0, 0, 0],
+    #                     [0, 0, 0, 0, 0, -1, 0, 0, 0, 0],
+    #                     [0, 0, 0, 0, -1, -1, 0, 0, 0, 0],
+    #                     [0, -1, 0, 0, -1, 0, 0, 0, 0, 0],
+    #                     [0, -1, -1, 0, 0, 0, -1, 0, 0, 0],
+    #                     [-1, 0, -1, 0, 0, 0, -1, -1, -1, 0],
+    #                     [-1, 0, -1, 0, 0, 0, -1, 0, 0, 0],
+    #                     [-1, 0, 0, 0, 0, 0, -1, 0, 0, 0],
+    #                     [-1, -1, -1, 0, 0, 0, -1, 0, 0, 0],
+    #                     [-1, 0, 0, 0,- 1, 0, -1, 0, 0, 1]])
 
-    # maps = MAPS.select_map(STAGE)
-    # maps = np.array(maps) * -1
-    # maps[finish[0]][finish[1]] = 1
+    maps = MAPS.select_map(STAGE=0)
+    maps = np.array(maps) * -1
+    maps[finish[0]][finish[1]] = 1
 
     # print(maps)
-
     # maze_50[49][49] = 1
-
     # print(maze_20)
+    
     env = environment(maps, start, finish)
     shortest_path = []
 
@@ -45,7 +44,7 @@ def q_learning_route(STAGE, start, finish):
     epsilon = 0.1     
     epsilon_decay = 1/episodes
     shortest_path = q_train(env, qtable, episodes, alpha, gamma, epsilon, epsilon_decay,shortest_path)
-    print(f"shortest_path {shortest_path}")
+    # print(f"shortest_path {shortest_path}")
 
     return shortest_path
     # print(qtable)
@@ -56,7 +55,7 @@ def q_train(env, qtable, episodes, alpha, gamma, epsilon,epsilon_decay,shortest_
         # if _ >= 1000:
         #     print(f"here ")
 
-        print(f"episode {_}")
+        # print(f"episode {_}")
 
         state = env.reset()
         done = False
@@ -86,8 +85,7 @@ def q_train(env, qtable, episodes, alpha, gamma, epsilon,epsilon_decay,shortest_
 def check_if_shortest(path, shortest_path):
     if not shortest_path or len(path) < len(shortest_path):
         shortest_path = path   
-        
     return shortest_path
 
 if __name__ == '__main__':
-    q_learning_route(STAGE=1, start=(0,0), finish=(9,9))    
+    q_learning_route(STAGE=0, start=(0,0), finish=(9,9))    
