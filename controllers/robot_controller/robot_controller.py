@@ -7,7 +7,7 @@ import numpy as np
 
 if __name__ == "__main__":
     
-    STAGE, start, finish, algo = 1, (0,0), (10,5), "Astar" # change only these values to run the simulation
+    STAGE, start, finish, algo = 4, (0,0), (10,5), "Astar" # change only these values to run the simulation
     
     if algo == "Astar":
         route = astar_route(STAGE, start, finish)
@@ -33,7 +33,7 @@ if __name__ == "__main__":
 
     imu = InertialUnit('inertial unit')
     imu.enable(TIMESTEP)
-
+    
     #Motor Instances
     left_motor = robot.getDevice('motor_1')
     right_motor = robot.getDevice('motor_2')
