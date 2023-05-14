@@ -1,22 +1,61 @@
 from controller import Robot as WebotsRobot, GPS, Keyboard, InertialUnit
 from enums import *
 from math import pi
-from dijkstra import dijkstra_route
-from a_star import astar_route
 import numpy as np
+import time
+
+from memory_profiler import profile
+
+@profile(precision=3)
+def call_AStar(STAGE, start, finish):
+    start_time = time.time()
+    route = astar_route(STAGE, start, finish)
+    end_time = time.time()
+    time_ms = (end_time - start_time)*1000
+    print("Time Taken (ms):",time_ms)  
+    return route
+
+@profile(precision=3)
+def call_Dijkstra(STAGE, start, finish):
+    start_time = time.time()
+    route = dijkstra_route(STAGE, start, finish)  
+    end_time = time.time()
+    time_ms = (end_time - start_time)*1000
+    print("Time Taken (ms):",time_ms)  
+    return route
+
 
 if __name__ == "__main__":
     
-    STAGE, start, finish, algo = 4, (0,0), (10,5), "Astar" # change only these values to run the simulation
+    STAGE, start, finish, algo = 4, (0,0), (49,49), "Dijkstra" # change only these values to run the simulation
     
+    
+    if algo == "Dijkstra":
+        print("Running Dijkstra")
+        from dijkstra import dijkstra_route
+        route = call_Dijkstra(STAGE, start, finish)
+        print(f"Dijkstra Route : {route}") 
+         
     if algo == "Astar":
-        route = astar_route(STAGE, start, finish)
+        print("Running A*")
+        from a_star import astar_route
+        route = call_AStar(STAGE, start, finish)
         print(f"A* Route : {route}")
-    
-    elif algo == "Dijkstra":
-        route = dijkstra_route(STAGE, start, finish)
-        print(f"Dijkstra Route : {route}")    
-    
+        
+    print("Route Analysis - ")
+    num_diags = 0
+    num_straights = 0
+    print("Route Length:",len(route)-1)
+    for i in range(len(route)-1):
+        node = route[i]
+        next_node = route[i+1]
+        if next_node[0] - node[0] != 0 and next_node[1] - node[1] != 0:
+            num_diags = num_diags + 1
+        else:
+            num_straights = num_straights + 1
+    print("Number of diagonals:",num_diags)
+    print("Number of straights:",num_straights)
+        
     # create the Robot instance.
     robot = WebotsRobot()
 
@@ -33,7 +72,7 @@ if __name__ == "__main__":
 
     imu = InertialUnit('inertial unit')
     imu.enable(TIMESTEP)
-    
+
     #Motor Instances
     left_motor = robot.getDevice('motor_1')
     right_motor = robot.getDevice('motor_2')
