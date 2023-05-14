@@ -1,29 +1,20 @@
 import numpy as np
 from environment import environment 
+import MAPS
 
 
-def main():
-    # maze = np.array([[0, 0, -1, 0],
-    #         [0, 0, -1, 0],
-    #         [0, 0, 0, 0],
-    #         [0, 0, -1, 1]])
-
-    # maze = np.array([[0, 0, 0, 0, -1, 0, 0],
-    #             [0, 0, 0, 0, 0, 0, 0],
-    #             [0, 0, 0, 0, -1, 0, 1],
-    #             [0, 0, 0, 0, -1, 0, 0]])
-
-    maze = np.array([[0, 0, 0, 0, -1, 0, 0, 0, 0, 0],
-                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                    [0, 0, 0, 0, -1, 0, 0, 0, 0, 0],
-                    [0, 0, 0, 0, -1, 0, 0, 0, 0, 0],
-                    [0, 0, 0, 0, -1, 0, 0, 0, 0, 0],
-                    [0, 0, 0, 0, -1, 0, 0, 0, 0, 0],
-                    [0, 0, 0, 0, -1, 0, 0, 0, 0, 0],
-                    [0, 0, 0, 0, -1, 0, -1, 0, 0, 1],
-                    [0, 0, 0, 0, 0, 0, -1, 0, 0, 0],
-                    [0, 0, 0, 0,- 1, 0, -1, 0, 0, 0]]) 
-    env = environment(maze,(1,0), (3, 3))
+def qlearning_route(STAGE, start, finish):
+    
+    maps = MAPS.select_map(STAGE)
+    for row in range(len(maps)):
+        for i in range(len(maps[row])):
+            maps[row][i] *= -1
+             
+    maps[finish[0]][finish[1]] = 1
+    print(maps)
+    
+    maze = np.array(maps) 
+    env = environment(maze, start, finish)
     shortest_path = []
 
     x, y = maze.shape
@@ -69,4 +60,5 @@ def check_if_shortest(path, shortest_path):
     return shortest_path
 
 if __name__ == '__main__':
-    main()    
+    # main()    
+    qlearning_route(STAGE=1, start=(0,0), finish=(11,11))

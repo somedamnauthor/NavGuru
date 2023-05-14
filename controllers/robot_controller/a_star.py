@@ -84,6 +84,7 @@ def astar_route(STAGE, start, finish):
     # start = (0, 0)
     # finish = (49, 49)
     route = astar.get_route(start, finish)
+    # print(route)
     return(route)
     
 if __name__ == "__main__":
