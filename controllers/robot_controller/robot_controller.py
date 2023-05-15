@@ -45,13 +45,13 @@ if __name__ == "__main__":
         route = call_Dijkstra(STAGE, start, finish)
         print(f"Dijkstra Route : {route}") 
          
-    if algo == "Astar":
+    elif algo == "Astar":
         print("Running A*")
         from a_star import astar_route
         route = call_AStar(STAGE, start, finish)
         print(f"A* Route : {route}")
         
-    if algo == "Q":
+    elif algo == "Q":
         print("Running Q-Learning")
         from q_learning import q_learning_route
         route = call_Qlearning(STAGE, start, finish)
