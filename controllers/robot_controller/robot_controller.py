@@ -36,7 +36,7 @@ def call_Qlearning(STAGE, start, finish):
 
 if __name__ == "__main__":
     
-    STAGE, start, finish, algo = 0, (0,0), (9,9), "Astar" # change only these values to run the simulation
+    STAGE, start, finish, algo = 1, (0,0), (11,11), "Astar" # change only these values to run the simulation
     
     
     if algo == "Dijkstra":
