@@ -57,10 +57,10 @@ if __name__ == "__main__":
         route = call_Qlearning(STAGE, start, finish)
         print(f"Q-learning Route : {route}")
         
-    print("Route Analysis - ")
+    print("Route Analysis : ")
     num_diags = 0
     num_straights = 0
-    print("Route Length:",len(route)-1)
+    print("\tRoute Length:",len(route)-1)
     for i in range(len(route)-1):
         node = route[i]
         next_node = route[i+1]
@@ -68,8 +68,8 @@ if __name__ == "__main__":
             num_diags = num_diags + 1
         else:
             num_straights = num_straights + 1
-    print("Number of diagonals:",num_diags)
-    print("Number of straights:",num_straights)
+    print("\tNumber of diagonals:",num_diags)
+    print("\tNumber of straights:",num_straights)
         
     # create the Robot instance.
     robot = WebotsRobot()
