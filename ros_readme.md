@@ -1,6 +1,6 @@
 For the project NavGuide, steps to create the boilerplate for ROS,
 
-* to run the ROS2 image
+* to run the ROS2 image (make sure you pulled the foxy flavour of the ros, or use the distro you pulled)
 
   * *docker run -it -d ros:foxy /bin/bash*
 * create a workspace
@@ -10,9 +10,10 @@ For the project NavGuide, steps to create the boilerplate for ROS,
 * to create the package for the project
 
   * *ros2 pkg create --build-type ament_python `<project_name>`*
-  * *cd my_package/my_package*
+  * *cd `<project_name>`/`<project_name>`*
   * create a file '*my_node.p*y'
-    * `*import rclpy
+
+    * *`import rclpy
       from rclpy.node import Node
       from std_msgs.msg import String*
 
@@ -37,16 +38,18 @@ For the project NavGuide, steps to create the boilerplate for ROS,
       rclpy.shutdown()*
 
       *if __name__ == '__main__':
-      main()*
-      `
+      main()
+      `*
   * add below lines to the '*console_scripts*' array in the '*setup.py*'
-    * '*my_node = my_package.my_node:main',*
+
+    * '*my_node = `<project_name>`.my_node:main',*
   * run the below commands,
+
     * *cd ~/ros2_ws*
     * *colcon build* (remove everything excpet src folder when rebuilding)
     * *source install/setup.bash*
-    * *ros2 run my_package my_node*  (this should print 'Publishing: "Hello, ROS 2!")
-    * *source /opt/ros/foxy/setup.bash* (for 2nd terminal)
+    * *ros2 run `<project_name>`my_node*  (this should print 'Publishing: "Hello, ROS 2!")
+    * *source /opt/ros/foxy/setup.bash* (for 2nd terminal) (This is needed if you're running more than 1 node or service or topic)
 
   *Baseline version of ROS2 is done.*
 
@@ -57,8 +60,10 @@ For the project NavGuide, steps to create the boilerplate for ROS,
 * *To exit  a docker container*
   * *'exit'*
 * *To check the services running*
-  * *dockr -ps -a*
+  * *docker -ps -a*
 * *To commit the changes*
   * *docker commit <container_id> <new_name>*
 * *To see the list of Docker images*
   * *docker images*
+* To run a new terminal of a contianer,
+  * d*ocker exec -it /bin/bash*
