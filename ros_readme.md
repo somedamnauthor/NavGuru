@@ -61,7 +61,7 @@ For the project NavGuide, steps to create the boilerplate for ROS,
   * *'exit'*
 * *To check the services running*
   * *docker -ps -a*
-* *To commit the changes*
+* *To commit the changes* (use this sparingly)
   * *docker commit <container_id> <new_name>*
 * *To see the list of Docker images*
   * *docker images*
