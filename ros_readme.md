@@ -53,6 +53,10 @@ For the project NavGuide, steps to create the boilerplate for ROS,
 
   *Baseline version of ROS2 is done.*
 
+To get Docker image of our project with Astar:
+
+* docker pull parthipanr/nav_guide:latest
+
 *Docker commads to help:*
 
 * *To run a docker image*
