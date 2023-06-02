@@ -15,5 +15,7 @@ Evaluation Metrics : To do
 
 Simulation Demo: [Simulation using Webots](https://github.com/somedamnauthor/NavGuru/blob/master/sim_output/README.MD)
 
+ROS Integration: [ROS integration demo and details](https://github.com/somedamnauthor/NavGuru/blob/master/ros_output/README.md)
+
 
 
