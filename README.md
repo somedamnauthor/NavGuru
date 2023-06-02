@@ -13,9 +13,9 @@ Path-finding Algorithms Explored :
 
 Evaluation Metrics : To do
 
-Simulation Demo: [Simulation using Webots](https://github.com/somedamnauthor/NavGuru/blob/master/sim_output/README.MD)
+Simulation Demo: [Simulation using Webots](https://github.com/somedamnauthor/NavGuru/blob/master/Simulation/README.MD)
 
-ROS Integration: [ROS integration demo and details](https://github.com/somedamnauthor/NavGuru/blob/master/ros_output/README.md)
+ROS Integration: [ROS integration demo and details](https://github.com/somedamnauthor/NavGuru/blob/master/ROS_Implementation/README.md)
 
 
 
