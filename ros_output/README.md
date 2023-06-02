@@ -4,5 +4,6 @@
   ![ROS_arch](https://github.com/somedamnauthor/NavGuru/assets/21141134/fdfedfc3-877f-4a94-ad3b-43adc97bf435)
 - Each node has recieves and uses the topic concept of the ROS to send request and response.
 - The below video and screesnhots depicts the demo of ROS in our Project
-  https://github.com/somedamnauthor/NavGuru/assets/21141134/c4a87795-eb38-4baf-96f0-de774cfd0c72
+
+  https://github.com/somedamnauthor/NavGuru/assets/21141134/8d3c93ac-4e51-4e60-9491-3d50b988d350
 
