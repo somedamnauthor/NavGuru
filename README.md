@@ -15,5 +15,5 @@ Evaluation Metrics : To do
 
 Simulation Demo:
 
-A-Star on (Stage: 1, Start: (0,0), Finish:(11,11)) :
-  
+
+
