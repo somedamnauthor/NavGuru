@@ -10,6 +10,7 @@ Path-finding Algorithms Explored :
 * A* Algorithm
 * Dijkstra Algorithm
 * Q-Learning (RL) Algorithm
+* Rapidly exploring random tree (RRT) 
 
 Evaluation Metrics : To do
 
