@@ -12,7 +12,12 @@ Path-finding Algorithms Explored :
 * Q-Learning (RL) Algorithm
 * Rapidly exploring random tree (RRT) 
 
-Evaluation Metrics : To do
+Evaluation Metrics : 
+
+* Execution Time
+* Memory Consumption
+* Optimal Path Length
+* Optimal Diagonals 
 
 Simulation Demo: [Simulation using Webots](https://github.com/somedamnauthor/NavGuru/blob/master/Simulation/README.MD)
 
